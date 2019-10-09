@@ -121,10 +121,15 @@ public class Podometro {
      *  
      */
     public void printConfiguracion() {
-        System.out.println("#########################" + "\nAltura: " + altura * 0.01
-            + "mtos" + "\nSexo: " + sexo 
-            + "\nLongitud zancada: " + longitudZancada * 0.01 
-            + "mtos" + "\n#########################");
+        System.out.println("Configuración del podómetro" + "\n#####################" 
+        + "\n" + "\nAltura: " + altura * 0.01 + "mtos");  
+        if (sexo == MUJER){
+            System.out.println("Sexo: MUJER");
+        } 
+        else {
+            System.out.println("Sexo: HOMBRE");
+        } 
+        System.out.println("Longitud zancada: " + longitudZancada * 0.01 + "mtos");
     }
 
     /**
@@ -140,15 +145,15 @@ public class Podometro {
             (totalPasosDomingo * longitudZancada);
         double totalDistanciaFinSemana = (totalPasosSabado * longitudZancada) +
             (totalPasosDomingo * longitudZancada);
-        System.out.println("Estadisticas" + "\n########################" 
+        System.out.println("\nEstadisticas" + "\n########################" + "\n"
             + "\nDistancia recorrida toda la semana: " + totalDistanciaSemana 
             / 100000 + "Km" + "\nDistancia recorrida fin de semana: " + 
-            totalDistanciaFinSemana / 100000 + "Km" + "\n" + "\n" +
+            totalDistanciaFinSemana / 100000 + "Km" + "\n" +
             "\nNº pasos días laborables: " 
             + totalPasosLaborables + "\nNº pasos SÁBADO: "+ totalPasosSabado
-            + "\nNº pasos DOMINGO: "+ totalPasosDomingo + "\n" + "\n" + 
+            + "\nNº pasos DOMINGO: "+ totalPasosDomingo + "\n" + 
             "\nNº Caminatas realizadas a partir de las 21hH.:" 
-            + caminatasNoche + "\n" + "\n" + 
+            + caminatasNoche + "\n" + 
             "\nTiempo total caminado en la semana: " + tiempo / 60 + "h. y " 
             + tiempo % 60 + "m." );
     }
@@ -183,5 +188,15 @@ public class Podometro {
         sexo = MUJER;
         altura = 0; 
         longitudZancada = 0;
+
+        totalPasosLaborables = 0;
+        totalPasosSabado = 0;
+        totalPasosDomingo = 0;
+
+        totalDistanciaSemana = 0;
+        totalDistanciaFinSemana = 0;
+
+        tiempo = 0;
+        caminatasNoche = 0;
     }
 }
