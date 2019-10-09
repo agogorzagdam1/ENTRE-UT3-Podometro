@@ -61,10 +61,10 @@ public class Podometro {
         altura = queAltura ;
         sexo = queSexo;
         if (sexo == MUJER) {
-            longitudZancada = Math.floor(altura * ZANCADA_MUJER) * 0.01;
+            longitudZancada = Math.floor(altura * ZANCADA_MUJER);
         }
-        else if (sexo == HOMBRE) {
-            longitudZancada = Math.ceil(altura * ZANCADA_HOMBRE) * 0.01;
+        else {
+            longitudZancada = Math.ceil(altura * ZANCADA_HOMBRE);
         }
     }
 
@@ -82,16 +82,13 @@ public class Podometro {
      *   (leer enunciado del ejercicio)
      */
     public void registrarCaminata(int pasos, int dia, int horaInicio,int horaFin) {
+        String nombreDia;
         switch (dia){
-            case 1: dia = 1;
-            break;
-            case 2: dia = 2;
-            break;
-            case 3: dia = 3;
-            break;
-            case 4: dia = 4;
-            break;
-            case 5: dia = 5;
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5: nombreDia = "Dias laborables";
             break;
             case 6: dia = SABADO;
             break;
@@ -126,7 +123,7 @@ public class Podometro {
     public void printConfiguracion() {
         System.out.println("#########################" + "\nAltura: " + altura * 0.01
             + "mtos" + "\nSexo: " + sexo 
-            + "\nLongitud zancada: " + longitudZancada 
+            + "\nLongitud zancada: " + longitudZancada * 0.01 
             + "mtos" + "\n#########################");
     }
 
@@ -145,8 +142,8 @@ public class Podometro {
             (totalPasosDomingo * longitudZancada);
         System.out.println("Estadisticas" + "\n########################" 
             + "\nDistancia recorrida toda la semana: " + totalDistanciaSemana 
-            / 1000 + "Km" + "\nDistancia recorrida fin de semana: " + 
-            totalDistanciaFinSemana / 1000 + "Km" + "\n" + "\n" +
+            / 100000 + "Km" + "\nDistancia recorrida fin de semana: " + 
+            totalDistanciaFinSemana / 100000 + "Km" + "\n" + "\n" +
             "\nNº pasos días laborables: " 
             + totalPasosLaborables + "\nNº pasos SÁBADO: "+ totalPasosSabado
             + "\nNº pasos DOMINGO: "+ totalPasosDomingo + "\n" + "\n" + 
